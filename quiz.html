@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DC Fan Hub — Who Are You?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="quiz.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span></div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link active" href="quiz.html"><span class="nav-icon">🎭</span><span>Quiz</span></a>
+      <a class="nav-link" href="game.html"><span class="nav-icon">🏏</span><span>Game</span></a>
+      <a class="nav-link" href="daily.html"><span class="nav-icon">📅</span><span>Daily XI</span></a>
+      <a class="nav-link" href="stats.html"><span class="nav-icon">📊</span><span>Stats</span></a>
+      <a class="nav-link" href="admin.html"><span class="nav-icon">⚙️</span><span>Admin</span></a>
+    </nav>
+    <div class="user-badge" id="userBadge"><span class="user-dot"></span><span id="userBadgeName">Guest</span></div>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="quiz-wrap" id="quizWrap">
+
+    <!-- INTRO SCREEN -->
+    <div class="quiz-screen active" id="screenIntro">
+      <div class="quiz-intro-card">
+        <div class="quiz-intro-emoji">🎭</div>
+        <h1 class="quiz-title">WHICH DC LEGEND ARE YOU?</h1>
+        <p class="quiz-sub">8 questions · 2 minutes · Discover your DC identity</p>
+        <p class="quiz-sub" style="margin-top:6px;font-size:11px">You'll be assigned a DC player twin + your fan type flair.<br>Your flair appears next to your name in chat!</p>
+        <div id="existingFlair" style="display:none" class="existing-flair-block"></div>
+        <button class="btn-gold quiz-start-btn" id="startQuizBtn">Find Out Now →</button>
+      </div>
+    </div>
+
+    <!-- QUESTION SCREEN -->
+    <div class="quiz-screen" id="screenQuestion">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
+      <div class="quiz-q-num" id="qNum">Question 1 of 8</div>
+      <div class="quiz-question-card">
+        <div class="quiz-q-text" id="qText"></div>
+        <div class="quiz-options" id="qOptions"></div>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="quiz-screen" id="screenResult">
+      <div class="quiz-result-card" id="resultCard">
+        <div class="result-label">YOU ARE</div>
+        <div class="result-player-name" id="resultPlayer"></div>
+        <div class="result-player-desc" id="resultDesc"></div>
+        <div class="result-flair-row">
+          <div class="flair-badge" id="resultFanType"></div>
+        </div>
+        <div class="result-traits" id="resultTraits"></div>
+        <div class="result-actions">
+          <button class="btn-gold" id="retakeBtn">Retake Quiz</button>
+          <a class="btn-primary" href="index.html">Go to Chat →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MOBILE TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab active" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+
+<div id="hubNotice"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

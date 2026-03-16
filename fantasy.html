@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DC Fan Hub — Fantasy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="fantasy.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span></div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link active" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link" href="quiz.html"><span class="nav-icon">🎭</span><span>Quiz</span></a>
+      <a class="nav-link" href="game.html"><span class="nav-icon">🏏</span><span>Game</span></a>
+      <a class="nav-link" href="daily.html"><span class="nav-icon">📅</span><span>Daily XI</span></a>
+      <a class="nav-link" href="stats.html"><span class="nav-icon">📊</span><span>Stats</span></a>
+      <a class="nav-link" href="admin.html"><span class="nav-icon">⚙️</span><span>Admin</span></a>
+    </nav>
+    <div class="user-badge" id="userBadge">
+      <span class="user-dot"></span>
+      <span id="userBadgeName">Guest</span>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- PAGE HEADER -->
+  <div class="fantasy-hero">
+    <div>
+      <div class="badge badge-gold" style="margin-bottom:8px">⚡ Fantasy League</div>
+      <h1 class="fantasy-hero-title">PICK YOUR DREAM XI</h1>
+      <p class="fantasy-hero-sub">Select 11 DC players · Choose Captain (2×) & Vice-Captain (1.5×) · Earn points each match</p>
+    </div>
+    <div class="scoring-guide-btn-wrap">
+      <button class="btn-ghost" id="scoringGuideBtn">📋 Scoring Rules</button>
+    </div>
+  </div>
+
+  <div class="fantasy-layout">
+
+    <!-- LEFT: Team builder -->
+    <div class="fantasy-left">
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">MY TEAM</h2>
+          <div class="team-meta">
+            <span class="badge badge-muted" id="teamCountBadge">0/11 selected</span>
+            <span id="captainDisplay" class="badge badge-gold" style="display:none">C: —</span>
+            <span id="vcDisplay"      class="badge badge-muted" style="display:none">VC: —</span>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:8px">
+            <button class="btn-ghost" id="clearTeamBtn">Clear</button>
+            <button class="btn-gold"  id="saveTeamBtn" disabled>Save Team →</button>
+          </div>
+        </div>
+
+        <!-- Selected players list -->
+        <div class="selected-list" id="selectedList">
+          <div class="selected-empty">Pick players from the squad below</div>
+        </div>
+
+        <!-- Role filter -->
+        <div class="section-header" style="border-top:1px solid var(--border);border-bottom:none;padding-bottom:10px">
+          <h2 class="section-title" style="font-size:15px">SQUAD</h2>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-left:auto">
+            <button class="filter-btn active" data-rf="all">All</button>
+            <button class="filter-btn" data-rf="bat">Bat</button>
+            <button class="filter-btn" data-rf="bowl">Bowl</button>
+            <button class="filter-btn" data-rf="ar">AR</button>
+            <button class="filter-btn" data-rf="wk">WK</button>
+          </div>
+        </div>
+
+        <!-- Squad grid -->
+        <div class="squad-pick-grid" id="squadPickGrid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Leaderboard + Match points -->
+    <div class="fantasy-right">
+
+      <!-- Leaderboard -->
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">LEADERBOARD</h2>
+          <div class="xi-tabs" role="tablist" style="margin-left:auto">
+            <button class="lb-tab active" data-lb="season">Season</button>
+            <button class="lb-tab" data-lb="match">Last Match</button>
+          </div>
+        </div>
+        <div id="leaderboardList" class="leaderboard-list">
+          <div class="empty-state">No teams yet. Be the first!</div>
+        </div>
+      </div>
+
+      <!-- Scoring rules guide (collapsed) -->
+      <div class="section" id="scoringGuideSection" style="display:none">
+        <div class="section-header">
+          <h2 class="section-title">SCORING RULES</h2>
+          <button class="btn-ghost" id="scoringGuideClose" style="margin-left:auto">Close</button>
+        </div>
+        <div class="section-body scoring-table">
+          <div class="score-row"><span>Run scored</span><span>+1 pt</span></div>
+          <div class="score-row"><span>50+ runs</span><span>+10 bonus</span></div>
+          <div class="score-row"><span>100+ runs</span><span>+20 bonus</span></div>
+          <div class="score-row divider"><span>Wicket taken</span><span>+20 pts</span></div>
+          <div class="score-row"><span>3-wicket haul</span><span>+10 bonus</span></div>
+          <div class="score-row"><span>5-wicket haul</span><span>+20 bonus</span></div>
+          <div class="score-row divider"><span>Catch / Stumping</span><span>+8 pts</span></div>
+          <div class="score-row divider"><span>Economy ≤5</span><span>+8 pts</span></div>
+          <div class="score-row"><span>Economy 5-6</span><span>+6 pts</span></div>
+          <div class="score-row"><span>Economy 6-7</span><span>+4 pts</span></div>
+          <div class="score-row"><span>Economy 9-10</span><span>−2 pts</span></div>
+          <div class="score-row"><span>Economy 10+</span><span>−4 pts</span></div>
+          <div class="score-row divider"><span>SR 170+</span><span>+8 pts</span></div>
+          <div class="score-row"><span>SR 150-170</span><span>+6 pts</span></div>
+          <div class="score-row"><span>SR 130-150</span><span>+4 pts</span></div>
+          <div class="score-row"><span>SR 70-100</span><span>−2 pts</span></div>
+          <div class="score-row"><span>SR &lt;70</span><span>−4 pts</span></div>
+          <div class="score-row divider"><span>Man of the Match</span><span>+25 pts</span></div>
+          <div class="score-row divider"><span>Captain</span><span>2× points</span></div>
+          <div class="score-row"><span>Vice-Captain</span><span>1.5× points</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- C/VC PICKER MODAL -->
+<div class="modal-overlay" id="cvModal" hidden>
+  <div class="modal-box" style="width:min(380px,95vw)">
+    <button class="modal-close" id="cvModalClose">✕</button>
+    <h3>Set Captain &amp; Vice-Captain</h3>
+    <p class="modal-sub">Captain earns <strong>2×</strong> points. Vice-Captain earns <strong>1.5×</strong> points.</p>
+    <div id="cvPlayerList" class="cv-player-list"></div>
+    <p class="modal-sub" style="margin-top:12px" id="cvStatus"></p>
+  </div>
+</div>
+
+<div id="hubNotice"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="fantasy.js"></script>
+
+<!-- MOBILE BOTTOM TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab active" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+</body>
+</html>

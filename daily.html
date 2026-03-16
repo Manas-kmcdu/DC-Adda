@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DC Fan Hub — Daily XI Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="daily.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span></div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link" href="quiz.html"><span class="nav-icon">🎭</span><span>Quiz</span></a>
+      <a class="nav-link" href="game.html"><span class="nav-icon">🏏</span><span>Game</span></a>
+      <a class="nav-link active" href="daily.html"><span class="nav-icon">📅</span><span>Daily XI</span></a>
+    </nav>
+    <div class="user-badge" id="userBadge"><span class="user-dot"></span><span id="userBadgeName">Guest</span></div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="daily-hero">
+    <div>
+      <div class="badge badge-gold" style="margin-bottom:8px">📅 Daily Challenge</div>
+      <h1 class="daily-title">PICK THE BEST DC XI</h1>
+      <p class="daily-sub">Pick your best 11 from the squad · Submit · Vote for your favourite submission</p>
+    </div>
+    <div class="daily-meta">
+      <div class="daily-date" id="dailyDate"></div>
+      <div class="daily-resets" id="dailyResets">Resets in: —</div>
+      <div class="badge badge-muted" id="submissionCount">0 submissions today</div>
+    </div>
+  </div>
+
+  <!-- TWO COLUMN LAYOUT -->
+  <div class="daily-layout">
+
+    <!-- LEFT: Builder -->
+    <div class="daily-left" id="builderView">
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">YOUR XI</h2>
+          <span class="badge badge-muted" id="pickedCount">0 / 11</span>
+          <button class="btn-ghost" id="clearDailyBtn" style="margin-left:auto">Clear</button>
+          <button class="btn-gold" id="submitDailyBtn" disabled>Submit XI →</button>
+        </div>
+
+        <!-- Selected XI vertical list -->
+        <div class="daily-selected-list" id="dailySelectedList">
+          <div class="daily-empty-pick">Tap players below to build your XI</div>
+        </div>
+
+        <!-- Player pool -->
+        <div class="section-header" style="border-top:1px solid var(--border);padding-top:12px">
+          <h2 class="section-title" style="font-size:14px">SQUAD</h2>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;margin-left:auto">
+            <button class="filter-btn active" data-df="all">All</button>
+            <button class="filter-btn" data-df="bat">Bat</button>
+            <button class="filter-btn" data-df="bowl">Bowl</button>
+            <button class="filter-btn" data-df="ar">AR</button>
+            <button class="filter-btn" data-df="wk">WK</button>
+          </div>
+        </div>
+        <div class="daily-pool-grid" id="dailyPoolGrid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Submissions + Voting -->
+    <div class="daily-right">
+      <div class="section">
+        <div class="section-header">
+          <h2 class="section-title">TODAY'S SUBMISSIONS</h2>
+          <div class="daily-sort-tabs" style="margin-left:auto;display:flex;gap:4px">
+            <button class="filter-btn active" data-sort="votes">Top Voted</button>
+            <button class="filter-btn" data-sort="recent">Recent</button>
+          </div>
+        </div>
+        <div id="submissionsList" class="submissions-list">
+          <div class="empty-state">No submissions yet. Be the first!</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ALREADY SUBMITTED BANNER -->
+<div class="submitted-banner" id="submittedBanner" style="display:none">
+  <span>✅ You've submitted today's XI!</span>
+  <button class="btn-text" id="editSubmissionBtn" style="color:inherit;text-decoration:underline">Edit</button>
+</div>
+
+<!-- MOBILE TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab active" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+
+<div id="hubNotice"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="daily.js"></script>
+</body>
+</html>

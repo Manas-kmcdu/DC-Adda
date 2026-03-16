@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DC Fan Hub — Stats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="stats.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span></div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link active" href="stats.html"><span class="nav-icon">📊</span><span>Stats</span></a>
+      <a class="nav-link" href="admin.html"><span class="nav-icon">⚙️</span><span>Admin</span></a>
+    </nav>
+    <div class="user-badge" id="userBadge">
+      <span class="user-dot"></span>
+      <span id="userBadgeName">Guest</span>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <div class="stats-hero">
+    <h1 class="stats-hero-title">PLAYER STATS</h1>
+    <p class="stats-hero-sub">Season performance · Fantasy points · Match-by-match breakdown</p>
+  </div>
+
+  <!-- Season totals table -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">SEASON TOTALS</h2>
+      <div style="display:flex;gap:6px;margin-left:auto;flex-wrap:wrap">
+        <button class="stats-sort-btn active" data-sort="fantasyPts">Fantasy Pts ↓</button>
+        <button class="stats-sort-btn" data-sort="runs">Runs</button>
+        <button class="stats-sort-btn" data-sort="wickets">Wickets</button>
+      </div>
+    </div>
+    <div class="stats-table-wrap">
+      <table class="stats-table" id="seasonTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Player</th>
+            <th>Role</th>
+            <th>Matches</th>
+            <th>Runs</th>
+            <th>Wkts</th>
+            <th>Catches</th>
+            <th>Fantasy Pts</th>
+          </tr>
+        </thead>
+        <tbody id="seasonTableBody">
+          <tr><td colspan="8" class="empty-state">Loading stats…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Match-by-match breakdown -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">MATCH BREAKDOWN</h2>
+      <select id="matchSelect" class="match-select">
+        <option value="">— Select a match —</option>
+      </select>
+    </div>
+    <div id="matchBreakdownWrap">
+      <div class="empty-state" style="padding:20px">Select a match to see detailed stats</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="hubNotice"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="stats.js"></script>
+
+<!-- MOBILE BOTTOM TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+</body>
+</html>

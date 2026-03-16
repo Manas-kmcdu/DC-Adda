@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+  <title>DC Fan Hub — Tap Batting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="game.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span></div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link" href="quiz.html"><span class="nav-icon">🎭</span><span>Quiz</span></a>
+      <a class="nav-link active" href="game.html"><span class="nav-icon">🏏</span><span>Game</span></a>
+      <a class="nav-link" href="daily.html"><span class="nav-icon">📅</span><span>Daily XI</span></a>
+    </nav>
+    <div class="user-badge" id="userBadge"><span class="user-dot"></span><span id="userBadgeName">Guest</span></div>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="game-wrap">
+
+    <!-- TITLE -->
+    <div class="game-header">
+      <h1 class="game-title">TAP BATTING</h1>
+      <p class="game-sub">Time your shot perfectly · 6 balls · Score as many runs as you can</p>
+    </div>
+
+    <!-- SCOREBOARD -->
+    <div class="game-scoreboard">
+      <div class="score-block"><span id="gameRuns">0</span><span>Runs</span></div>
+      <div class="score-sep"></div>
+      <div class="score-block"><span id="gameBalls">0</span><span>Balls</span></div>
+      <div class="score-sep"></div>
+      <div class="score-block"><span id="gameWickets">0</span><span>Wickets</span></div>
+      <div class="score-sep"></div>
+      <div class="score-block"><span id="gameOver">1</span><span>Over</span></div>
+    </div>
+
+    <!-- PITCH AREA -->
+    <div class="pitch-area" id="pitchArea">
+
+      <!-- Bowler end -->
+      <div class="bowler-end">
+        <div class="bowler-figure" id="bowlerFigure">🎯</div>
+        <div class="bowler-name" id="bowlerName">Bowler</div>
+      </div>
+
+      <!-- Pitch lane -->
+      <div class="pitch-lane" id="pitchLane">
+        <div class="crease crease-top"></div>
+        <div class="crease crease-bottom"></div>
+        <div class="ball-el" id="ballEl" style="display:none">🔴</div>
+        <!-- Timing zone indicator -->
+        <div class="timing-zone" id="timingZone"></div>
+      </div>
+
+      <!-- Batter end -->
+      <div class="batter-end">
+        <div class="batter-figure" id="batterFigure">🏏</div>
+        <div class="batter-name" id="batterName">You</div>
+      </div>
+
+    </div>
+
+    <!-- RESULT POPUP -->
+    <div class="shot-result" id="shotResult"></div>
+
+    <!-- TAP BUTTON -->
+    <div class="tap-area">
+      <button class="tap-btn" id="tapBtn" disabled>
+        <span id="tapBtnLabel">TAP TO START</span>
+      </button>
+      <p class="tap-hint" id="tapHint">Tap when the ball reaches the crease!</p>
+    </div>
+
+    <!-- BALL INDICATOR -->
+    <div class="ball-indicators" id="ballIndicators"></div>
+
+    <!-- HIGH SCORES -->
+    <div class="section" style="margin-top:20px">
+      <div class="section-header">
+        <h2 class="section-title" style="font-size:16px">HIGH SCORES</h2>
+        <span class="badge badge-muted" id="myBestBadge"></span>
+      </div>
+      <div id="highScoreList" class="hiscore-list">
+        <div class="empty-state">No scores yet. Be the first!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GAME OVER MODAL -->
+<div class="modal-overlay" id="gameOverModal" hidden>
+  <div class="modal-box game-over-box">
+    <h3 id="gameOverTitle">INNINGS OVER!</h3>
+    <div class="game-over-score" id="gameOverScore"></div>
+    <div class="game-over-grade" id="gameOverGrade"></div>
+    <div class="game-over-actions">
+      <button class="btn-gold" id="playAgainBtn" style="flex:1;justify-content:center">Play Again</button>
+      <button class="btn-ghost" id="saveScoreBtn" style="flex:1;justify-content:center">Save Score</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab active" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+
+<div id="hubNotice"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

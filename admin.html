@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DC Fan Hub — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="dc-crest"><span class="crest-dc">DC</span><span class="crest-sub">DELHI CAPITALS</span></div>
+    <div class="site-title">DC FAN <span>HUB</span> — ADMIN</div>
+    <nav class="site-nav">
+      <a class="nav-link" href="index.html"><span class="nav-icon">🏠</span><span>Home</span></a>
+      <a class="nav-link" href="fantasy.html"><span class="nav-icon">⚡</span><span>Fantasy</span></a>
+      <a class="nav-link" href="stats.html"><span class="nav-icon">📊</span><span>Stats</span></a>
+      <a class="nav-link active" href="admin.html"><span class="nav-icon">⚙️</span><span>Admin</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- PASSWORD GATE -->
+<div id="adminGate" class="admin-gate">
+  <div class="admin-gate-box">
+    <div class="dc-crest-sm">DC</div>
+    <h2>Admin Access</h2>
+    <p class="modal-sub">Enter the admin password to continue.</p>
+    <input type="password" id="adminPassInput" class="username-input" placeholder="Password" autocomplete="off"/>
+    <div class="username-error" id="adminPassErr"></div>
+    <button class="btn-primary" id="adminPassBtn" style="width:100%;margin-top:12px">Enter →</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL (hidden until password) -->
+<div id="adminPanel" class="page-wrap" style="display:none">
+
+  <div class="admin-grid">
+
+    <!-- ADD MATCH -->
+    <div class="section">
+      <div class="section-header"><h2 class="section-title">ADD MATCH</h2></div>
+      <div class="section-body admin-form">
+        <label class="form-label">Opponent</label>
+        <input type="text" id="matchOpponent" class="admin-input" placeholder="e.g. Mumbai Indians"/>
+        <label class="form-label">Date &amp; Time</label>
+        <input type="datetime-local" id="matchDatetime" class="admin-input"/>
+        <label class="form-label">Venue</label>
+        <input type="text" id="matchVenue" class="admin-input" placeholder="e.g. Arun Jaitley Stadium"/>
+        <button class="btn-primary" id="addMatchBtn" style="margin-top:12px">Add Match →</button>
+      </div>
+    </div>
+
+    <!-- MATCH RESULT -->
+    <div class="section">
+      <div class="section-header"><h2 class="section-title">UPDATE RESULT</h2></div>
+      <div class="section-body admin-form">
+        <label class="form-label">Match</label>
+        <select id="resultMatchSel" class="admin-input"></select>
+        <label class="form-label">Result</label>
+        <input type="text" id="resultText" class="admin-input" placeholder="e.g. Won by 6 wickets"/>
+        <button class="btn-primary" id="saveResultBtn" style="margin-top:12px">Save Result →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ENTER MATCH STATS -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">ENTER MATCH STATS</h2>
+      <select id="statsMatchSel" class="admin-input" style="margin-left:auto;width:auto"></select>
+    </div>
+    <div class="section-body">
+      <p class="form-label" style="margin-bottom:12px">Fill in stats for each player who played. Leave blank to skip.</p>
+      <div id="statsPlayerGrid" class="stats-player-grid"></div>
+      <button class="btn-gold" id="saveStatsBtn" style="margin-top:16px">Save All Stats →</button>
+    </div>
+  </div>
+
+  <!-- EXISTING MATCHES -->
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">MATCH LIST</h2></div>
+    <div class="section-body" id="adminMatchList">
+      <div class="empty-state">No matches yet.</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="hubNotice"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="shared.js"></script>
+<script src="admin.js"></script>
+
+<!-- MOBILE BOTTOM TAB BAR -->
+<nav class="mobile-tab-bar">
+  <a class="mob-tab" href="index.html"><span class="mob-tab-icon">🏠</span>Home</a>
+  <a class="mob-tab" href="fantasy.html"><span class="mob-tab-icon">⚡</span>Fantasy</a>
+  <a class="mob-tab" href="quiz.html"><span class="mob-tab-icon">🎭</span>Quiz</a>
+  <a class="mob-tab" href="game.html"><span class="mob-tab-icon">🏏</span>Game</a>
+  <a class="mob-tab" href="daily.html"><span class="mob-tab-icon">📅</span>Daily</a>
+</nav>
+</body>
+</html>
